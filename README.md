@@ -1,13 +1,39 @@
-# docker-rtmp
+# sb-rtmp-proxy-docker
 
-twitch, youtube ... streaming
+여러개 서비스 동시 스트리밍할 때 사용하는 이미지
 
-## 설정
+## 사용법
 
+### 사용포트
+
+rtmp 표준 포트
 Port 1935
 
-서버 env 추가는 준비중
-`docker run --rm -e TWITCH_ENDPOINT=xxxx -e TWITCH_CODE=xxxx -e YOUTUBE_ENDPOINT=xxxx -e YOUTUBE_CODE=xxxx sb-rtmp-nginx:alpine`
+방화벽을 사용하는 경우 열어놔야함
+
+### 스트리밍 앱
+
+obs 등등의 앱에서 `rtmp://localhost/default` 주소 등록 코드나 별도 정보는 필요없음
+
+### 도커 설치
+
+* windows + hyperv : https://docs.docker.com/docker-for-windows/install/
+* windows + virtualbox : https://docs.docker.com/toolbox/toolbox_install_windows/
+* mac + virtualbox : https://docs.docker.com/docker-for-mac/install/
+* linux : 하는사람들은 알아서 잘 하지 않을까 싶지만  https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
+### 명령행 실행
+
+동적으로 안되고 다 입력해야됩니다.
+
+```bash
+docker run --rm \
+-e TWITCH_ENDPOINT=xxxx \
+-e TWITCH_CODE=xxxx \
+-e YOUTUBE_ENDPOINT=xxxx \
+-e YOUTUBE_CODE=xxxx \
+sb-rtmp-nginx:alpine
+```
 
 overwrite /etc/nginx/module.d/10-rtmp.conf
 `docker run --rm -v $(pwd)/10-rtmp.conf:/etc/nginx/module.d/10-rtmp.conf sb-rtmp-nginx:alpine`
@@ -15,6 +41,5 @@ overwrite /etc/nginx/module.d/10-rtmp.conf
 ## 참고
 
 https://github.com/arut/nginx-rtmp-module
-
 https://stream.twitch.tv/ingests/
 https://support.google.com/youtube/answer/2474026?hl=en
