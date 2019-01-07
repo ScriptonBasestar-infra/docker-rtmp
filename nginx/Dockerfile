@@ -1,11 +1,9 @@
-FROM ubuntu:18.04
+ARG OS_VERSION=alpine
 
-RUN apt-get update && apt-get -y upgrade
+FROM nginx:${OS_VERSION}
 
-RUN \
-    apt-get install -y build-essential libpcre3 libpcre3-dev libssl-dev unzip && \
-    apt-get install -y nginx libnginx-mod-rtmp && \
-    apt-get install -y ffmpeg
+RUN apk update && apk upgrade && \
+    apk add nginx-mod-rtmp
 
 ADD ./nginx.conf /etc/nginx/nginx.conf
 ADD ./10-rtmp.conf /etc/nginx/module.d/10-rtmp.conf

@@ -24,19 +24,21 @@ obs 등등의 앱에서 `rtmp://localhost/default` 주소 등록 코드나 별�
 
 ### 명령행 실행
 
-동적으로 안되고 다 입력해야됩니다.
+* TWITCH YOUTUBE 다 입력하지 않으면 오류
+* 현재 alpine만 테스트
 
 ```bash
 docker run --rm \
--e TWITCH_ENDPOINT=xxxx \
+-e TWITCH_ENDPOINT=live-sel.twitch.tv/app \
 -e TWITCH_CODE=xxxx \
--e YOUTUBE_ENDPOINT=xxxx \
+-e YOUTUBE_ENDPOINT=a.rtmp.youtube.com/live2 \
 -e YOUTUBE_CODE=xxxx \
-sb-rtmp-nginx:alpine
+scriptonbasestar/sb-rtmp-proxy-nginx:alpine
 ```
 
-overwrite /etc/nginx/module.d/10-rtmp.conf
-`docker run --rm -v $(pwd)/10-rtmp.conf:/etc/nginx/module.d/10-rtmp.conf sb-rtmp-nginx:alpine`
+다른 방법으로
+
+`docker run --rm -v $(pwd)/10-rtmp.conf:/etc/nginx/module.d/10-rtmp.conf scriptonbasestar/sb-rtmp-proxy-nginx:alpine`
 
 ## 참고
 
