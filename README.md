@@ -13,7 +13,7 @@ Port 1935
 
 ### 스트리밍 앱
 
-obs 등등의 앱에서 `rtmp://localhost/default` 주소 등록 코드나 별도 정보는 필요없음
+obs 등등의 앱에서 `rtmp://localhost/app` 주소 등록 코드나 별도 정보는 필요없음
 
 ### 도커 설치
 
@@ -33,6 +33,7 @@ docker run --rm \
 -e TWITCH_CODE=xxxx \
 -e YOUTUBE_ENDPOINT=a.rtmp.youtube.com/live2 \
 -e YOUTUBE_CODE=xxxx \
+-p 1905:1905 \
 scriptonbasestar/sb-rtmp-proxy-nginx:alpine
 ```
 
@@ -42,6 +43,6 @@ scriptonbasestar/sb-rtmp-proxy-nginx:alpine
 
 ## 참고
 
-https://github.com/arut/nginx-rtmp-module
-https://stream.twitch.tv/ingests/
-https://support.google.com/youtube/answer/2474026?hl=en
+* https://github.com/arut/nginx-rtmp-module
+* https://stream.twitch.tv/ingests/
+* https://support.google.com/youtube/answer/2474026?hl=en

@@ -4,7 +4,7 @@
 # TODO VERSION 가져와서 사용
 source ./VERSION
 
-docker build ./nginx-alpine \
+docker build ./nginx \
 -t scriptonbasestar/sb-rtmp-proxy-nginx:alpine \
 -t scriptonbasestar/sb-rtmp-proxy-nginx:latest
 
